@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-
-// This is now a simpler, non-sticky navbar
 export default function Navbar({ isLoggedIn = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Styles for the pill design
   const linkStyles = 'hover:text-indigo-600';
   const activeLinkStyles = 'text-indigo-600 font-bold';
   const ctaButtonStyles = 'bg-indigo-600 hover:bg-indigo-500 text-white';
@@ -36,7 +32,7 @@ export default function Navbar({ isLoggedIn = false }) {
             <StyledNavLink to="/logout">Logout</StyledNavLink>
           ) : (
             <>
-              <StyledNavLink to="/login">Login</StyledNavLink>
+              <StyledNavLink to="/login">Sign In</StyledNavLink>
               <Link to="/signup" className={`px-5 py-2 rounded-full transition-colors ${ctaButtonStyles}`}>
                 Sign Up
               </Link>
