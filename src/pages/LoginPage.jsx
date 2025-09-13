@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom'; 
+import "./LoginPage.css";
 
 export default function LoginPage({ setIsLoggedIn }) {
   const navigate = useNavigate();
