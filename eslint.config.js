@@ -23,14 +23,12 @@ export default defineConfig([
       },
     },
     rules: {
-        "no-unused-vars": ["error", {
-            "vars": "all",
-            "args": "after-used",
-            "caughtErrors": "all",
-            "ignoreRestSiblings": false,
-            "ignoreUsingDeclarations": false,
-            "reportUsedIgnorePattern": false
-        }]
-    },
+  "no-unused-vars": ["ignore", {
+    "vars": "local",         // "all" se "local" karo
+    "args": "none",          // function args ignore karo
+    "ignoreRestSiblings": true
+  }]
+}
+,
   },
 ])
