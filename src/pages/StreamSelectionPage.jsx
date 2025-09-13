@@ -51,7 +51,7 @@ export default function StreamSelectionPage() {
           className="mb-12"
         >
           <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-            Chart Your Course
+            Select Your Course
           </h1>
           <p className="text-gray-600 mt-4 text-lg">
             Your journey begins here. Pick a stream to explore the possibilities.
