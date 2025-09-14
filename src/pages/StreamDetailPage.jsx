@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import YouTube from 'react-youtube';
 import { ArrowLeft, BookText, Play } from 'lucide-react';
 import { streamData } from '../data/streamData';
 
@@ -10,6 +11,19 @@ export default function StreamDetailPage() {
   if (!data) {
     return <div>Stream not found!</div>;
   }
+
+  // YouTube player ke liye options
+  const youtubeOptions = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 1,
+      modestbranding: 1,
+      rel: 0,
+      // --- FIX: Yeh line add karni hai ---
+      origin: 'http://localhost:5173', 
+    },
+  };
   
   const sectionAnimation = {
       initial: { y: 50, opacity: 0 },
@@ -40,7 +54,6 @@ export default function StreamDetailPage() {
           </Link>
         </motion.div>
         
-        {/* New container to center everything below the 'Back' link */}
         <div className="text-center">
           <motion.h1
             initial={{y: -30, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 0.3}}
@@ -53,9 +66,11 @@ export default function StreamDetailPage() {
             className="h-[55vh] inline-block"
           >
             <div className="aspect-video h-full rounded-2xl overflow-hidden shadow-2xl shadow-indigo-500/20">
-              <video key={data.videoSrc} controls autoPlay muted className="w-full h-full object-cover">
-                <source src={data.videoSrc} type="video/mp4" />
-              </video>
+              <YouTube
+                  videoId={data.videoId}
+                  opts={youtubeOptions}
+                  className="w-full h-full"
+              />
             </div>
           </motion.div>
         </div>
@@ -69,7 +84,6 @@ export default function StreamDetailPage() {
             </div>
         </motion.section>
 
-        {/* --- Quiz Section is now just a Link --- */}
         <motion.section {...sectionAnimation} className="mt-16 text-center">
             <Link 
               to={`/stream/${streamName}/quiz`}
